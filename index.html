@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адресная форма с сортировкой</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Отступы между инпутами */
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: row; /* Чтобы нумерация и инпуты были в одной строке */
+            align-items: center; /* Вертикальное выравнивание */
+            width: 300px; /* Ширина инпутов */
+        }
+
+        .number {
+            margin-right: 10px; /* Отступ от номера до инпута */
+            font-weight: bold;
+            color: #333; /* Цвет номера */
+            width: 20px; /* Фиксированная ширина для номера */
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid white; /* Белая граница */
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: white;
+            color: #333; /* Цвет текста */
+            transition: box-shadow 0.3s ease, border 0.3s ease;
+            flex: 1; /* Чтобы инпут занимал оставшееся пространство */
+        }
+
+        .input-style {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+
+        .input-style:focus {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-color: #007bff;
+        }
+
+        .sortable-ghost {
+            opacity: 0.5; /* Прозрачность при перемещении */
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+</head>
+<body>
+
+<div class="container" id="sortableContainer">
+    <!-- Нумерация и инпуты, нумерация фиксирована -->
+    <div class="form-group">
+        <span class="number">1.</span>
+        <input list="addresses" id="input1" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">2.</span>
+        <input list="addresses" id="input2" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">3.</span>
+        <input list="addresses" id="input3" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">4.</span>
+        <input list="addresses" id="input4" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">5.</span>
+        <input list="addresses" id="input5" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">6.</span>
+        <input list="addresses" id="input6" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">7.</span>
+        <input list="addresses" id="input7" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">8.</span>
+        <input list="addresses" id="input8" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">9.</span>
+        <input list="addresses" id="input9" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">10.</span>
+        <input list="addresses" id="input10" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">11.</span>
+        <input list="addresses" id="input11" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">12.</span>
+        <input list="addresses" id="input12" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">13.</span>
+        <input list="addresses" id="input13" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">14.</span>
+        <input list="addresses" id="input14" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">15.</span>
+        <input list="addresses" id="input15" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">16.</span>
+        <input list="addresses" id="input16" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">17.</span>
+        <input list="addresses" id="input17" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">18.</span>
+        <input list="addresses" id="input18" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">19.</span>
+        <input list="addresses" id="input19" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">20.</span>
+        <input list="addresses" id="input20" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">21.</span>
+        <input list="addresses" id="input21" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">22.</span>
+        <input list="addresses" id="input22" class="input-style" placeholder="Введите адрес">
+    </div>
+    <div class="form-group">
+        <span class="number">23.</span>
+        <input list="addresses" id="input23" class="input-style" placeholder="Введите адрес">
+    
+    </div>
+
+    <datalist id="addresses">
+        <option value="Калины 75/2">
+        <option value="Лаврухина 9">
+        <option value="Калины 26">
+        <option value="Милославская 43">
+        <option value="Бальзака 80">
+        <option value="Калины 17">
+        <option value="Калины 89б">
+        <option value="Бальзака 6">
+        <option value="Будищанская 7Г">
+        <option value="Сержа Лифаря 1">
+        <option value="Закревского 93А">
+        <option value="Калины 47">
+        <option value="Милославская 6">
+        <option value="Радунская 7">
+        <option value="Калины 63/12">                
+        <option value="Калины 26А №301">
+        <option value="Закревского 87 №331">
+        <option value="Данькевича 16 №67">
+        <option value="Калины 97/15 №147">
+        <option value="Калины 73А №149">
+        <option value="Сержа Лифаря 20 №362">
+        <option value="Будищанская 7 №221">
+        <option value="Бальзака 91/29А №164">
+        <option value="Бальзака 55Б №188">
+        <option value="Градинская 7 №123">
+        <option value="Градинская 1 №69">
+        <option value="Закревского 12 №183">
+        <option value="Калины 15 №201">
+        <option value="Лисковская 37 №339">
+        <option value="Бальзака 4 №295">
+        <option value="Закревского 21 №290">
+    </datalist>
+
+    <button id="copyButton">Copy All</button>
+</div>
+
+<script>
+    // Инициализация Sortable.js для возможности перетаскивания инпутов
+    new Sortable(document.getElementById('sortableContainer'), {
+        animation: 150, // Анимация при перемещении
+        ghostClass: 'sortable-ghost' // Класс для "призрачного" инпута при перемещении
+    });
+
+    document.getElementById('copyButton').addEventListener('click', function() {
+        let textToCopy = '';
+        const inputs = document.querySelectorAll('.input-style');
+        inputs.forEach((input, index) => {
+            textToCopy += (index + 1) + ') ' + input.value + '\n';
+        });
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            alert('Text copied to clipboard!');
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+        });
+    });
+</script>
+
+</body>
+</html>
