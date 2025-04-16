@@ -220,15 +220,23 @@
 
     document.getElementById('copyButton').addEventListener('click', function() {
         let textToCopy = '';
+        let filledIndex = 1; // Start numbering from 1 for filled inputs
         const inputs = document.querySelectorAll('.input-style');
-        inputs.forEach((input, index) => {
-            textToCopy += (index + 1) + ') ' + input.value + '\n';
+        inputs.forEach(input => {
+            if (input.value.trim() !== '') { // Check if the input is filled
+                textToCopy += filledIndex + ') ' + input.value + '\n';
+                filledIndex++; // Increment only for filled inputs
+            }
         });
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            alert('Text copied to clipboard!');
-        }).catch(err => {
-            console.error('Failed to copy text: ', err);
-        });
+        if (textToCopy) {
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert('Text copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        } else {
+            alert('No filled inputs to copy.');
+        }
     });
 </script>
 
