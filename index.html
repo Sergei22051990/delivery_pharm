@@ -6,8 +6,8 @@
     <title>Адресная форма с сортировкой</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
             margin: 0;
             padding: 20px;
             display: flex;
@@ -19,13 +19,15 @@
         .container {
             display: flex;
             flex-direction: column;
-            gap: 10px; /* Отступы между инпутами */
+            gap: 10px;
             align-items: center;
             justify-content: center;
             padding: 20px;
             background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            width: 400px;
         }
 
         .form-group {
@@ -43,15 +45,15 @@
         }
 
         input[type="text"] {
-            padding: 10px;
+            padding: 12px;
             font-size: 16px;
-            border: 1px solid white; /* Белая граница */
-            border-radius: 5px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
             box-sizing: border-box;
-            background-color: white;
-            color: #333; /* Цвет текста */
+            background-color: #f9f9f9;
+            color: #333;
             transition: box-shadow 0.3s ease, border 0.3s ease;
-            flex: 1; /* Чтобы инпут занимал оставшееся пространство */
+            flex: 1;
         }
 
         .input-style {
@@ -60,7 +62,7 @@
         }
 
         .input-style:focus {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             border-color: #007bff;
         }
 
@@ -72,6 +74,22 @@
             display: flex;
             justify-content: center;
             margin-top: 20px;
+        }
+
+        button#copyButton {
+            padding: 12px 24px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button#copyButton:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
@@ -206,6 +224,7 @@
         <option value="Лисковская 37 №339">
         <option value="Бальзака 4 №295">
         <option value="Закревского 21 №290">
+        <option value="Калины 75/2 №399">
     </datalist>
 
     <button id="copyButton">Copy All</button>
